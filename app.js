@@ -1,44 +1,28 @@
 $(document).ready(function() {
-  // Global variables...
-  // Displays current hour in military format
-  var currentHour = moment().format("H");
-
-  var num7El = $("#seven");
-  var num8El = $("#eight");
-  var num9El = $("#nine");
-  var num10El = $("#ten");
-  var num11El = $("#eleven");
-  var num12El = $("#twelve");
-  var num13El = $("#thirteen");
-  var num14El = $("#fourteen");
-  var num15El = $("#fifteen");
-  var num16El = $("#sixteen");
-  var num17El = $("#seventeen");
-  var num18El = $("#eighteen");
-  var num19El = $("#nineteen");
-
   // Display Current Date and Time in jumbotron
   $("#currentDay").text(moment().format("dddd, MMMM Do YYYY - h:mm a"));
 
   // Array that holds the time block elements
   var timeBlocks = [
-    num7El,
-    num8El,
-    num9El,
-    num10El,
-    num11El,
-    num12El,
-    num13El,
-    num14El,
-    num15El,
-    num16El,
-    num17El,
-    num18El,
-    num19El
+    $("#seven"),
+    $("#eight"),
+    $("#nine"),
+    $("#ten"),
+    $("#eleven"),
+    $("#twelve"),
+    $("#thirteen"),
+    $("#fourteen"),
+    $("#fifteen"),
+    $("#sixteen"),
+    $("#seventeen"),
+    $("#eighteen"),
+    $("#nineteen")
   ];
 
   // Loops through timeBlocks...
   timeBlocks.forEach(block => {
+    // Displays current hour in military format
+    var currentHour = moment().format("H");
     // Sets block value to timedBlock...
     var timedBlock = $(block).attr("value");
     // Sets var's to integer...
@@ -47,14 +31,116 @@ $(document).ready(function() {
 
     // Compares value to current hour and applies class accordingly
     if (timedBlock < currentHour) {
-      console.log(timedBlock + "is in past");
+      // console.log(timedBlock + "is in past");
       $(block).addClass("past");
     } else if (timedBlock === currentHour) {
-      console.log(timedBlock + "same");
+      // console.log(timedBlock + "same");
       $(block).addClass("present");
     } else if (timedBlock > currentHour) {
       console.log(timedBlock + "is later");
       $(block).addClass("future");
     }
   });
+
+  // Gets saved task from local storage and displays in time block.
+  $("#seven").text(localStorage.getItem("7am"));
+  $("#eight").text(localStorage.getItem("8am"));
+  $("#nine").text(localStorage.getItem("9am"));
+  $("#ten").text(localStorage.getItem("10am"));
+  $("#eleven").text(localStorage.getItem("11am"));
+  $("#twelve").text(localStorage.getItem("12pm"));
+  $("#thirteen").text(localStorage.getItem("1pm"));
+  $("#fourteen").text(localStorage.getItem("2pm"));
+  $("#fifteen").text(localStorage.getItem("3pm"));
+  $("#sixteen").text(localStorage.getItem("4pm"));
+  $("#seventeen").text(localStorage.getItem("5pm"));
+  $("#eighteen").text(localStorage.getItem("6pm"));
+  $("#nineteen").text(localStorage.getItem("7pm"));
+
+  // Setting text of time blocks to save to local storafe on button click...
+  $(".saveBtn").on("click", function(event) {
+    event.preventDefault();
+    setTasks();
+  });
+
+  function setTasks() {
+    localStorage.setItem(
+      "7am",
+      $("#seven")
+        .val()
+        .trim()
+    );
+    localStorage.setItem(
+      "8am",
+      $("#eight")
+        .val()
+        .trim()
+    );
+    localStorage.setItem(
+      "9am",
+      $("#nine")
+        .val()
+        .trim()
+    );
+    localStorage.setItem(
+      "10am",
+      $("#ten")
+        .val()
+        .trim()
+    );
+    localStorage.setItem(
+      "11am",
+      $("#eleven")
+        .val()
+        .trim()
+    );
+    localStorage.setItem(
+      "12pm",
+      $("#twelve")
+        .val()
+        .trim()
+    );
+    localStorage.setItem(
+      "1pm",
+      $("#thirteen")
+        .val()
+        .trim()
+    );
+    localStorage.setItem(
+      "2pm",
+      $("#fourteen")
+        .val()
+        .trim()
+    );
+    localStorage.setItem(
+      "3pm",
+      $("#fifteen")
+        .val()
+        .trim()
+    );
+    localStorage.setItem(
+      "4pm",
+      $("#sixteen")
+        .val()
+        .trim()
+    );
+    localStorage.setItem(
+      "5pm",
+      $("#seventeen")
+        .val()
+        .trim()
+    );
+    localStorage.setItem(
+      "6pm",
+      $("#eighteen")
+        .val()
+        .trim()
+    );
+    localStorage.setItem(
+      "7pm",
+      $("#nineteen")
+        .val()
+        .trim()
+    );
+  }
 });
