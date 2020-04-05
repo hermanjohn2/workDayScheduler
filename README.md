@@ -19,4 +19,4 @@ The main objectives were:
 
 ## Examples of Code
 
-The project was built using jQuery. Current date and time is displayed using moment(). Get/Set local storage was used to keep tasks in storage.
+The project was built using jQuery and Moment.js. Get/Set local storage was used to display tasks for entire day despite a user refresh. Local storage is cleared every night to ensure a blank scheduler is presented every morning.
